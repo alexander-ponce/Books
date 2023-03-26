@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Register or Login</title>
+</head>
+<body class="container bg-dark">
+    
+
+    <nav class="navbar navbar-light bg-secondary">
+        <h1 class="navbar-brand p-2 ml-5 text-white font-weight-bolder">TV Shows!</h1>
+    </nav>
+<div class="d-flex justify-content-end flex-wrap align-content-around">   
+    <form action="/create/account" method="POST" class="p-4 col-4 mx-auto my-5 bg-secondary text-white ">
+        {% with messages = get_flashed_messages(category_filter=['register']) %}
+				{% if messages %}
+					{% for message in messages %}
+						<p class='form-control is-invalid'>{{message}}</p>
+					{% endfor %}
+				{% endif %}
+		{% endwith %}
+        <h2 class="text-center  mt-3 text-white">Register</h2>
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" class="form-control">
+        </div><br>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" class="form-control">
+        </div><br>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="email" class="form-control">
+        </div><br>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control">
+        </div><br>
+
+        <div class="form-group">
+            <label for="conf-password">Confirm Password:</label>
+            <input type="password" name="conf_password" class="form-control">
+        </div><br>
+
+        <input type="submit" value="Register" class="btn btn-dark text-white">
+    </form>
+
+    <form action="/login" method="POST" class="p-4 col-4 mx-auto my-5 bg-secondary text-light ">
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+				{% if messages %}
+					{% for message in messages %}
+						<p class='form-control is-invalid'>{{message}}</p>
+					{% endfor %}
+				{% endif %}
+		{% endwith %}
+        <h2 class="text-center  mt-3 text-white">Login</h2>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="login_email" class="form-control">
+        </div><br>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="login_password" class="form-control">
+        </div><br>
+
+
+        <input type="submit" value="Login" class="btn btn-dark text-white ">
+    </form>
+</div> 
+
+</body>
+</html>

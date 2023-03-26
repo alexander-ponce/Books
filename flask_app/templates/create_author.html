@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Register or Login</title>
+</head>
+<body class="container bg-dark">
+    
+<!-- 
+    <nav class="navbar navbar-light bg-secondary">
+        <h1 class="navbar-brand p-2 ml-5 text-white font-weight-bolder">New Author</h1>
+    </nav> -->
+<div class="d-flex justify-content-end flex-wrap align-content-around">   
+    <form action="/create_author" method="POST" class="p-4 col-4 mx-auto my-5 bg-secondary text-white ">
+        
+        <h2 class="text-center  mt-3 text-white">New Author</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="hidden" id="name" value="{{all_authors.id}}">
+            <input type="text" name="name" class="form-control">
+        </div><br>
+
+    
+
+        <input type="submit" value="Create" class="btn btn-dark text-white">
+    </form>
+
+    <div class="p-4 col-4 mx-auto my-5 bg-secondary text-light ">
+        
+        <h2 class="text-center  mt-3 text-white">All Authors</h2><br>
+        <div class="form-group">
+            {% for author in all_authors %}
+                <a href="/author_page/{{author.id}}"> <p class="text-white">{{author.name}}</p></a>
+            {% endfor %}
+        </div><br>
+
+    <div>
+        <a href="/add_book">Add Book</a>
+    </div>
+
+</div>
+</div> 
+
+</body>
+</html>
